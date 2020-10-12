@@ -128,6 +128,4 @@ $ consul-terraform-sync -config-file=tasks.hcl
 | tag_to_ip_associatuion | Name of the dynamic address tags created and the IP addresses associated |
 
 
-    
-  **In summary, consul-terraform-sync triggers a Terraform workflow (plan, apply, destroy) based on updates it detects from Consul catalog.**
   
