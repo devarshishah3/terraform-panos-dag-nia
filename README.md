@@ -21,11 +21,11 @@ The **consul-terraform-sync** runs as a daemon that enables a **publisher-subscr
 <img width="800" src="https://user-images.githubusercontent.com/11891727/95024708-b5ec5900-0639-11eb-9fa5-c11a290a5305.png"> </a>
 </p>
 
-* consul-terraform-sync **subscribes to updates from the Consul catalog** and executes one or more automation **"tasks"** with appropriate value of *service variables* based on those updates. **consul-terraform-sync** leverages [Terraform](https://www.terraform.io/) as the underlying automation tool and utilizes the Terraform provider ecosystem to drive relevant change to the network infrastructure. 
+* consul-terraform-sync **subscribes to updates from the Consul catalog** and executes one or more automation **task** with appropriate value of *service variables* based on those updates. **consul-terraform-sync** leverages [Terraform](https://www.terraform.io/) as the underlying automation tool and utilizes the Terraform provider ecosystem to drive relevant change to the network infrastructure. 
 
 * Each task consists of a runbook automation written as a compatible **Terraform module** using resources and data sources for the underlying network infrastructure provider.
 
-Please refer to this [link (to be updated)](https://www.consul.io/docs/download-tools) for getting started with **consul-terraform-sync**
+Please refer to this [link](https://www.consul.io/docs/nia/installation/install) for getting started with **consul-terraform-sync**
 
 ## Requirements
 
@@ -57,7 +57,7 @@ In order to use this module, you will need to install **consul-terraform-sync**,
 
 The users can subscribe to the services in the consul catalog and define the Terraform module which will be executed when there are any updates to the subscribed services using a **"task"**.
 
-**~> Note:** It is recommended to have the (consul-terraform-sync config guide (link to be added))[https://www.consul.io/docs] for reference.  
+**~> Note:** It is recommended to have the (consul-terraform-sync config guide)[https://www.consul.io/docs/nia/installation/configuration] for reference.  
 1. Download the **consul-terraform-sync** on a node which is highly available (prefrably, a node running a consul client)
 2. Add **consul-terraform-sync** to the PATH on that node
 3. Check the installation
@@ -157,8 +157,8 @@ consul-terraform-sync will get an update for the services in the consul catalog 
 2. **Managing the entire Terraform workflow:**
 If a task and is defined, one or more services are associated with the task, provider is declared in the task and a Terraform module is specified using the source field of the task, the following sequence of events will occur:
    1. consul-terraform-sync will install the required version of Terraform.
-   2. consul-terraform-sync will install the required version of the Terraform provider defined in the config file and declared in the "task".
-   3. A new direstory "nia-tasks" with a sub-directory corresponding to each "task" will be created. This is the reason for having strict guidelines around naming.
+   2. consul-terraform-sync will install the required version of the Terraform provider defined in the config file and declared in the task.
+   3. A new direstory "nia-tasks" with a sub-directory corresponding to each task will be created. This is the reason for having strict guidelines around naming.
    4. Each sub-directory corresponds to a separate Terraform workspace. 
    5. Within each sub-directory corresponding a task, consul-terraform-sync will template a main.tf, variables.tf, terraform.tfvars and terraform.tfvars.tmpl.
       * **main.tf:**
